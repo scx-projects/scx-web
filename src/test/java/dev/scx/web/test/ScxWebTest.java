@@ -31,12 +31,12 @@ public class ScxWebTest {
         var router = Router.of();
 
         router.route("/no-perm", c -> {
-            //这里可以直接抛出 异常
+            // 这里可以直接抛出 异常
             throw new ForbiddenException(new RuntimeException("你没有权限 !!!"));
         });
 
         router.route("/no-perm2", c -> {
-            //或者用这种 httpServer 的形式 和上方是一样的
+            // 或者用这种 httpServer 的形式 和上方是一样的
             c.request().response().statusCode(FORBIDDEN).send("Error");
         });
 
