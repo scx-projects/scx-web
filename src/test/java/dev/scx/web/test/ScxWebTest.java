@@ -4,7 +4,7 @@ import dev.scx.http.exception.ForbiddenException;
 import dev.scx.http.routing.Router;
 import dev.scx.http.routing.path_matcher.TemplatePathMatcher;
 import dev.scx.http.x.HttpServer;
-import dev.scx.object.x.mapper.time.TemporalAccessorNodeMapperOptions;
+import dev.scx.object.x.mapper.time.LocalDateTimeNodeMapperOptions;
 import dev.scx.serialize.SerializeConfig;
 import dev.scx.web.ScxWeb;
 import org.testng.annotations.Test;
@@ -61,7 +61,7 @@ public class ScxWebTest {
             .serializeConfig(
                 SerializeConfig.of()
                     .putMapperOptions(
-                        new TemporalAccessorNodeMapperOptions().setFormatter(LocalDateTime.class, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"))
+                        new LocalDateTimeNodeMapperOptions().formatter(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"))
                     )
             )
             .routes(new HelloWorldController());
