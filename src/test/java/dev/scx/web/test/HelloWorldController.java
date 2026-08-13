@@ -2,6 +2,8 @@ package dev.scx.web.test;
 
 import dev.scx.http.exception.ForbiddenException;
 import dev.scx.http.media_type.FileFormat;
+import dev.scx.http.routing.RoutingContext;
+import dev.scx.web.annotation.PathCapture;
 import dev.scx.web.annotation.QueryParam;
 import dev.scx.web.annotation.Route;
 import dev.scx.web.annotation.Routes;
@@ -11,8 +13,19 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import static dev.scx.web.result.Noop.NOOP;
+
 @Routes
 public class HelloWorldController {
+
+    @Route("/:path")
+    public Object name(@PathCapture String path, RoutingContext context) throws Throwable {
+        if (path.contains("scx")) {
+            return path;
+        }
+        context.next();
+        return NOOP;
+    }
 
     @Route("/info")
     public Object name(@QueryParam(required = false) String id) {
