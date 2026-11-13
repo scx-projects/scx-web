@@ -8,7 +8,7 @@ import dev.scx.web.ScxWebRoute;
 /// @author scx567888
 public interface Interceptor {
 
-    /// 前置处理器 若要中断执行请在 handle 中抛出异常.
+    /// 前置处理器 若要中断执行请在 preHandle 中抛出异常.
     default void preHandle(RoutingContext routingContext, ScxWebRoute scxWebRoute) throws Exception {
 
     }
