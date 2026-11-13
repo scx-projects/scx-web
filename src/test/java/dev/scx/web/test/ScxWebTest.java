@@ -22,7 +22,7 @@ public class ScxWebTest {
         test1();
     }
 
-    /// 测试 bindErrorHandler
+    /// 测试 bind onError
     @Test
     public static void test0() throws IOException {
         var httpServer = new HttpServer();
@@ -47,7 +47,7 @@ public class ScxWebTest {
 
     }
 
-    /// 测试 registerHttpRoutes
+    /// 测试 ScxWeb.routes 路由注册
     public static void test1() throws IOException {
 
         var httpServer = new HttpServer();
@@ -71,7 +71,7 @@ public class ScxWebTest {
 
         // 原有的并不会收到任何影响
         router.route("/my-route", c -> {
-            //这里直接抛出会由 ScxWeb 进行处理
+            // 这里的异常可以直接抛出, 会由 ScxWeb 进行处理
             c.request().response().send("my-route");
         });
 
